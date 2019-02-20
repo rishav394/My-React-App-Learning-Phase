@@ -1,0 +1,69 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>React Basics</title>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+      class App extends React.Component {
+        state = {
+          name: "Newbie",
+          age: 18
+        };
+
+        handleChnge = e => {
+          var x = e.target.value;
+          if (x.length > 0) {
+            this.setState({
+              name: x
+            });
+          } else {
+            this.setState({
+              name: "Newbie"
+            });
+          }
+        };
+
+        preventCopy = e => {
+          alert("For once in your life be original");
+          e.preventDefault();
+        };
+
+        handleSubmit = e => {
+          e.preventDefault();
+        };
+
+        render() {
+          return (
+            <div className="app-component">
+              <h1>Hey {this.state.name}, welcome to Umbrella Academy</h1>
+              <form onSubmit={this.handleSubmit}>
+                <input
+                  text="text"
+                  onChange={this.handleChnge}
+                  onCopy={this.preventCopy}
+                />
+                <button>Submit</button>
+              </form>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>

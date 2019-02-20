@@ -1,0 +1,68 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>React Basics</title>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+      class App extends React.Component {
+        state = {
+          name: "Buwan",
+          age: 18
+        };
+
+        // change to arrow function to access state
+        clickHandler(e) {
+          console.log("Hello there");
+          console.log(e.target);
+        }
+
+        fuck = e => {
+          alert("Try being original for once noob");
+          return true;
+        };
+
+        handlerMouseHover = e => {
+          console.log(e.target);
+          this.setState({
+            name: "ff"
+          });
+        };
+
+        handleCopy(e) {
+          alert("try being original for once");
+        }
+
+        render() {
+          return (
+            <div className="app-content">
+              <h1>Hello, ninjas!</h1>
+              <p>Random number: {Math.random() * 10}</p>
+              <p>
+                My name is {this.state.name} and my age is {this.state.age}
+              </p>
+              <button onClick={this.clickHandler}>Click me</button>
+              <button onMouseOver={this.handlerMouseHover}>Hover me</button>
+              <p onCopy={this.fuck}>what we think we become</p>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>
